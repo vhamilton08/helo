@@ -10,25 +10,24 @@ class Dashboard extends Component {
         }
     }
 
-    componentDidMount() {
+    // componentDidMount() {
         
-    }
+    
+//    const displayPosts = posts.map((posts, index) => {
+//         return <div key={index}>{posts}</div>
+//     })
     render() {
-        this.state.posts.map(el, id) => {
-            return <div key={id}>{el}</div>
-        })
-        const {post} = this.state
-        return(
-            <div>
-                <div>Dashboard</div>
-                <input name="search" value={post} type="text" placeholder="search"/>
-                <button>Search</button>
-                <button>Reset</button>
-                
-            </div>
-
-        )
+        // return(
+        //     <div>
+        //         <div>Dashboard
+        //             <input name="search" value={post} type="text" placeholder="search"/>
+        //             <button>Search</button>
+        //             <button>Reset</button>
+        //         </div>
+        //         {displayPosts}
+        //     </div>   
+        // )      
+        return null    
     }
 }
-
 export default Dashboard
