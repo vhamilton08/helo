@@ -8,15 +8,15 @@ import {Provider} from 'react-redux'
 import store from './ducks/store'
 
 ReactDOM.render(
+      <HashRouter>
   <React.StrictMode>
     <Provider store={store}>
-      <HashRouter>
         <App />
-      </HashRouter>
     </Provider>
+  </React.StrictMode>
+      </HashRouter>,
 
 
-  </React.StrictMode>,
   document.getElementById('root')
 );
 

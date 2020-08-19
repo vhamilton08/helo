@@ -25,7 +25,7 @@ massive({
     console.log('connected to db')
 }).catch(err => console.log(err))
 
-app.post('api/auth/dashboard', Ctrl.register)
+app.post('/api/auth/login', Ctrl.register)
 app.post('/api/auth/dashboard', Ctrl.login)
 app.post('/api/auth/logout', Ctrl.logout)
 

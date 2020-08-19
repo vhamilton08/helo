@@ -22,7 +22,7 @@ class Auth extends Component {
 
     register = () => {
         const {username, password} = this.state
-        axios.post('/auth/dashboard', {username, password}).then(res => {
+        axios.post('/api/auth/dashboard', {username, password}).then(res => {
             this.props.loginUser(res.data)
             this.props.history.push('/dashboard')
         }).catch(err => {
@@ -33,7 +33,7 @@ class Auth extends Component {
 
     login = () => {
         const {username, password} = this.state
-        axios.post('/auth/dashboard', {username, password}).then(res => {
+        axios.post('/api/auth/login', {username, password}).then(res => {
             this.props.loginUser(res.data)
             this.props.history.push('/dashboard')
         }).catch(err => { console.log(err)
