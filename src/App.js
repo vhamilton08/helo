@@ -1,16 +1,17 @@
 import React from 'react';
 import './App.css';
 import Nav from './components/Nav/Nav'
-import Routes from './routes'
+import Routes from './Routes'
 import {withRouter} from 'react-router-dom'
 
-function App() {
+function App(props) {
   return (
     <div>
-      <Nav />
-      <Routes/>
+      {props.location.pathname !== '/' ? 
+      <Nav /> : null}
+      {Routes}
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);

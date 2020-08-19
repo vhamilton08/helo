@@ -12,7 +12,11 @@ class Form extends Component {
     }
     render() {
         return (
-            <div>Form</div>
+            <div>
+                <div>Form</div>
+                <p>how is it going</p>
+            </div>
+
         )
     }
 }

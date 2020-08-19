@@ -14,6 +14,9 @@ class Dashboard extends Component {
         
     }
     render() {
+        this.state.posts.map(el, id) => {
+            return <div key={id}>{el}</div>
+        })
         const {post} = this.state
         return(
             <div>
@@ -21,6 +24,7 @@ class Dashboard extends Component {
                 <input name="search" value={post} type="text" placeholder="search"/>
                 <button>Search</button>
                 <button>Reset</button>
+                
             </div>
 
         )
