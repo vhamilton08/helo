@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import axios from 'axios'
-// import {loginUser} from '../../ducks/reducer'
+// import {updateUser} from '../../ducks/reducer'
 
 
 
 class Nav extends Component {
- 
+    constructor(props){
+        super(props)
+    }
     logout = () => {
         axios.post('/api/auth/logout').then(res => {
             this.props.logoutUser()
@@ -27,6 +29,8 @@ class Nav extends Component {
                 <li><Link to="/new">New Post</Link></li>
                 <li onClick={this.logout}><Link to="/">Logout</Link></li>
             </ul>
+            <img src={this.props.profile_pic} alt="profile-pic"/>
+            {this.props.username}
            
          </nav>
         </div>
@@ -35,5 +39,10 @@ class Nav extends Component {
 }
     }
 
-const mapStateToProps = state => state
-export default connect(mapStateToProps, {connect})(Nav)
+const mapStateToProps = (reduxState) => {
+    return { 
+     profile_pic: reduxState.profile_pic,
+     username: reduxState.username
+    }
+}
+export default connect(mapStateToProps)(Nav)

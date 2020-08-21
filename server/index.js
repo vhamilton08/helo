@@ -10,7 +10,7 @@ const {CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env
 app.use(express.json())
 app.use(session({
     resave: false,
-    saveUnintialized: true,
+    saveUninitialized: true,
     cookie: { maxAge: 1000 * 60 * 60 * 72},
     secret: SESSION_SECRET
 }))
@@ -25,8 +25,10 @@ massive({
     console.log('connected to db')
 }).catch(err => console.log(err))
 
-app.post('/api/auth/login', Ctrl.register)
-app.post('/api/auth/dashboard', Ctrl.login)
-app.post('/api/auth/logout', Ctrl.logout)
+app.post('/auth/dashboard', Ctrl.register)
+app.post('/auth/login', Ctrl.login)
+app.post('/auth/logout', Ctrl.logout)
+
+app.get('/auth/posts', Ctrl.getPosts)
 
 app.listen(SERVER_PORT, () => console.log(`Server running on ${SERVER_PORT}`))

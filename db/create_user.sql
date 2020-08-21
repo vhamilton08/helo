@@ -1,4 +1,4 @@
-INSERT INTO users (username, password, profile_pic, password)
+INSERT INTO users (username, password)
 VALUES
-($1, $2, $3)
+($1, $2)
 RETURNING *;

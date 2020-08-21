@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {loginUser} from '../../ducks/reducer'
+import {updateUser} from '../../ducks/reducer'
+import './Auth.css'
 
 
 class Auth extends Component {
@@ -22,8 +23,8 @@ class Auth extends Component {
 
     register = () => {
         const {username, password} = this.state
-        axios.post('/api/auth/dashboard', {username, password}).then(res => {
-            this.props.loginUser(res.data)
+        axios.post('/auth/dashboard', {username, password}).then(res => {
+            this.props.updateUser(res.data)
             this.props.history.push('/dashboard')
         }).catch(err => {
             console.log(err)
@@ -33,8 +34,8 @@ class Auth extends Component {
 
     login = () => {
         const {username, password} = this.state
-        axios.post('/api/auth/login', {username, password}).then(res => {
-            this.props.loginUser(res.data)
+        axios.post('/auth/login', {username, password}).then(res => {
+            this.props.updateUser(res.data)
             this.props.history.push('/dashboard')
         }).catch(err => { console.log(err)
         alert("Login Failed")
@@ -49,11 +50,11 @@ class Auth extends Component {
                 <div>Auth</div>
                 <input name="username" type="text" value={username} placeholder="username" onChange={e => this.changeHandler(e)}/>
                 <input name="password" type="password" value={password} placeholder="password" onChange={e => this.changeHandler(e)}/>
-                <button onClick={this.login}>Login</button>
-                <button onClick={this.register}>Register</button>
+                <button className="authbuttons" onClick={this.login}>Login</button>
+                <button  className="authbuttons" onClick={this.register}>Register</button>
             </div>
         )
     }
 }
 
-export default connect(null, {loginUser})(Auth)
+export default connect(null, {updateUser})(Auth)

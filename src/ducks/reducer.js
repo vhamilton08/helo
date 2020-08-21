@@ -6,11 +6,11 @@ const initialState = {
     id: 0,
     profile_pic: ''
 }
-const LOGIN_USER = 'LOGIN_USER'
+const UPDATE_USER = 'UPDATE_USER'
 
-export function loginUser(id, username, profile_pic) {
+export function updateUser(id, username, profile_pic) {
     return {
-        type: 'LOGIN_USER',
+        type: 'UPDATE_USER',
         payload: {
             id,
             username,
@@ -23,7 +23,7 @@ export function loginUser(id, username, profile_pic) {
 export default function reducer(state = initialState, action) {
    const {type, payload} = action
     switch (type) {
-        case LOGIN_USER:
+        case UPDATE_USER:
             return {
                 ...state, id: payload, user: payload, profile_pic: payload} 
         default:
