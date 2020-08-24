@@ -29,6 +29,9 @@ app.post('/auth/dashboard', Ctrl.register)
 app.post('/auth/login', Ctrl.login)
 app.post('/auth/logout', Ctrl.logout)
 
-app.get('/auth/posts', Ctrl.getPosts)
+app.get('/api/posts', Ctrl.getPosts)
+app.get('/api/posts/:id', Ctrl.getPost)
+app.post('/api/createpost/:id', Ctrl.createPost)
+app.delete('/api/post/:id', Ctrl.deletePost)
 
 app.listen(SERVER_PORT, () => console.log(`Server running on ${SERVER_PORT}`))

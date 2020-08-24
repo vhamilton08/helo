@@ -15,7 +15,7 @@ module.exports = {
         req.session.user = {
             id: newUser.id,
         }
-        res.status(200).send(newUser.username)
+        res.status(200).send(newUser.username, )
     },
 
     login: async (req, res) => {
@@ -49,13 +49,33 @@ module.exports = {
         const {userposts, search} = req.query
         const getposts = await db.search_Posts([id])
         if(userposts[0] & search) {
-            return res.status(200).send(res.getPosts.data) 
+            return res.status(200).send(res.getposts.data) 
         } else if(!userposts[0] & !search) {
-            return res.status(200).send(res.getPosts)
+            return res.status(200).send(res.getposts)
         } else {
-            (!userposts & search) {
-                return res.send(res.getPosts)
+            (!userposts & search) 
+                return res.send(getposts)
             }
-        }
+        },
+
+    getPost: async (req, res) => {
+    const db = req.app.get('db')
+    const {id} = req.params
+    const post = await db.get_Post2([id])
+    res.status(200).send(post)
+},
+
+    createPost: async (req, res) => {
+        const {title, img, content} = req.body
+        const db = req.app.get('db')
+        const post = await db.create_post([title, img, content])
+        res.sendStatus('all good')
+    },
+
+    deletePost: async (req, res) => {
+        const {id} = req.params
+        const db = req.app.get('db')
+        const post = await db.delete_post([id])
+        res.status(200).send(post)
     }
     }  

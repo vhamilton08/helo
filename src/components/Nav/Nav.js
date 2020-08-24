@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import axios from 'axios'
-// import {updateUser} from '../../ducks/reducer'
+import {updateUser} from '../../ducks/reducer'
 
 
 
@@ -30,7 +30,7 @@ class Nav extends Component {
                 <li onClick={this.logout}><Link to="/">Logout</Link></li>
             </ul>
             <img src={this.props.profile_pic} alt="profile-pic"/>
-            {this.props.username}
+           <h1>{this.props.username}</h1>
            
          </nav>
         </div>
@@ -45,4 +45,4 @@ const mapStateToProps = (reduxState) => {
      username: reduxState.username
     }
 }
-export default connect(mapStateToProps)(Nav)
+export default connect(mapStateToProps, {updateUser})(Nav)
